@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>加密货币晨间简报 2026-09-03</title><style>
+:root {
+  --bg:#f4f6fb; --surface:#ffffff; --ink:#1c2333; --muted:#6b7485;
+  --rule:#e7eaf2; --accent:#2563eb; --accent-soft:#eaf1fe;
+  --up:#0a9e5c; --up-soft:#e5f6ee; --down:#d93a3a; --down-soft:#fdeaea;
+  --warn-bg:#fff8e6; --warn-bd:#f0d489;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Noto Sans CJK SC","WenQuanYi Micro Hei","Microsoft YaHei",system-ui,sans-serif;
+  font-size:15px; line-height:1.65; }
+.wrap { max-width:920px; margin:0 auto; padding:28px 20px 56px; }
+/* 顶部横幅 */
+.hero { background:linear-gradient(135deg,#0e1e46 0%,#1e3a8a 55%,#3b5bd6 100%);
+  border-radius:18px; padding:26px 28px 24px; color:#fff;
+  box-shadow:0 8px 24px rgba(20,40,110,.18); }
+.hero h1 { font-size:24px; margin:0; letter-spacing:.5px; }
+.hero .meta { color:#c3d2ff; font-size:13px; margin-top:6px; }
+.hero-kpis { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.hk { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.20);
+  border-radius:12px; padding:10px 16px; min-width:132px; }
+.hk .k { font-size:12px; color:#c3d2ff; }
+.hk .v { font-size:17px; font-weight:700; margin-top:2px; font-variant-numeric:tabular-nums; }
+.hk .d { font-size:12px; margin-top:2px; color:#dbe4ff; }
+.hk .d.up { color:#8ee8b6; } .hk .d.down { color:#ffb4ac; }
+/* 预警 */
+.alerts { background:var(--warn-bg); border:1px solid var(--warn-bd); border-radius:14px;
+  padding:16px 22px; margin-top:18px; }
+.alerts-title { font-weight:700; margin-bottom:8px; color:#8a5a06; }
+.alerts ul { margin:0; padding-left:20px; }
+.alerts li { margin:5px 0; font-size:14px; }
+.alerts.muted { background:#f2f4f9; border-color:#dfe4ee; color:var(--muted); }
+/* 卡片 */
+.card { background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:22px 24px; margin-top:18px; box-shadow:0 1px 3px rgba(16,24,64,.05); }
+.card h2 { display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px;
+  font-size:16px; margin:0 0 6px; }
+.card h2 .badge { flex:0 0 auto; min-width:26px; height:26px; border-radius:8px;
+  background:var(--accent-soft); color:var(--accent); font-size:14px; font-weight:700;
+  display:inline-flex; align-items:center; justify-content:center; padding:0 4px; }
+.sub { flex-basis:100%; color:var(--muted); font-size:12px; font-weight:400; margin:0; }
+/* 表格 */
+.table-wrap { overflow-x:auto; margin-top:8px; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th { color:var(--muted); font-weight:500; font-size:12px; letter-spacing:.03em;
+  border-bottom:2px solid var(--rule); padding:9px 10px; text-align:left; white-space:nowrap; }
+td { padding:10px; border-bottom:1px solid var(--rule); white-space:nowrap;
+  font-variant-numeric:tabular-nums; }
+table tr:hover { background:#f7f9fd; }
+th.num, td.num { text-align:right; }
+.up { color:var(--up); font-weight:600; }
+.down { color:var(--down); font-weight:600; }
+.pill { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+.pill.up { background:var(--up-soft); color:var(--up); }
+.pill.down { background:var(--down-soft); color:var(--down); }
+.pill.flat { background:#eef0f5; color:var(--muted); }
+/* KPI 卡 */
+.kpi-row { display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
+.kpi { flex:1 1 160px; background:#f8fafd; border:1px solid var(--rule);
+  border-radius:12px; padding:13px 16px; }
+.kpi .k { color:var(--muted); font-size:12px; }
+.kpi .v { font-size:18px; font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums; }
+/* 解读 */
+.interp { background:#f0f6ff; border:1px solid #d9e6fb; border-left:4px solid var(--accent);
+  border-radius:10px; padding:10px 14px; margin-top:14px; font-size:13.5px; color:#1f3c6d;
+  line-height:1.75; }
+/* 新闻 */
+.tag { display:inline-block; border-radius:6px; padding:2px 9px; font-size:12px;
+  font-weight:600; margin-right:8px; white-space:nowrap; background:#eef0f5; color:#5b6472; }
+.tag-c0 { background:#fdeaea; color:#c22f2f; }
+.tag-c1 { background:#f1ecfd; color:#6d3fc0; }
+.tag-c2 { background:#fff1e2; color:#b96a10; }
+.tag-c3 { background:#e7f0ff; color:#2563eb; }
+.tag-c4 { background:#e0f5f1; color:#0f8a76; }
+.tag-c5 { background:#eef0f5; color:#5b6472; }
+.tag-c6 { background:#e5f6ee; color:#0a9e5c; }
+.news-source { color:#374151; font-size:14px; margin:16px 0 4px; font-weight:600; }
+.news-item { padding:8px 0; border-bottom:1px solid var(--rule); font-size:14px; line-height:1.6; }
+.news-item:last-child { border-bottom:none; }
+.news-item a { color:#1a56db; text-decoration:none; }
+.news-item a:hover { text-decoration:underline; }
+.news-item .time { color:var(--muted); font-size:12px; margin-left:8px; }
+/* 情绪仪表 */
+.gauge { position:relative; height:14px; border-radius:999px; margin:16px 0 6px;
+  background:linear-gradient(90deg,#d93a3a 0%,#e8933a 30%,#e6c93a 50%,#8cc043 72%,#0a9e5c 100%); }
+.gauge .pin { position:absolute; top:-6px; width:4px; height:26px; background:#1c2333;
+  border-radius:3px; transform:translateX(-50%); box-shadow:0 0 0 2px #fff; }
+.gauge-scale { display:flex; justify-content:space-between; color:var(--muted); font-size:12px; }
+/* 多空比条 */
+.rbar { display:inline-block; width:104px; height:8px; border-radius:999px;
+  background:#f6d7d4; overflow:hidden; vertical-align:middle; margin-right:8px; }
+.rbar i { display:block; height:100%; border-radius:999px;
+  background:linear-gradient(90deg,#22b573,#0a9e5c); }
+/* ETF 流量条 */
+.fbar { display:inline-block; width:140px; height:10px; border-radius:999px;
+  background:#eef0f6; overflow:hidden; vertical-align:middle; margin-right:8px; }
+.fbar i { display:block; height:100%; border-radius:999px; }
+.note { color:var(--muted); font-size:12px; margin:10px 0 0; }
+.err { color:var(--down); font-size:13px; }
+footer { color:var(--muted); font-size:12px; margin-top:30px; text-align:center; line-height:1.8; }
+@media (max-width:640px) {
+  .wrap { padding:16px 12px 40px; }
+  .hero { padding:20px 18px; border-radius:14px; }
+  .card { padding:16px; }
+  .hk { min-width:130px; flex:1 1 auto; }
+}
+@media print {
+  body { background:#fff; }
+  .hero { box-shadow:none; }
+  .card { box-shadow:none; break-inside:avoid; }
+}
+</style></head><body><div class="wrap"><div class="hero"><h1>加密货币晨间简报</h1><div class="meta">生成时间：2026-09-03 08:11 · 数据块 A（行情）+ 数据块 B（舆论）· 每模块附决策解读</div><div class="hero-kpis"><div class="hk"><div class="k">BTC 现货</div><div class="v">$77,195</div><div class="d down">-0.26% · 24h</div></div><div class="hk"><div class="k">总市值</div><div class="v">$2.62 万亿</div><div class="d down">-2.66% · 24h</div></div><div class="hk"><div class="k">BTC 主导率</div><div class="v">59.1%</div><div class="d ">资金结构</div></div><div class="hk"><div class="k">恐惧贪婪</div><div class="v">65</div><div class="d ">Greed</div></div><div class="hk"><div class="k">BTC ETF 净流量</div><div class="v">-$1430 万</div><div class="d down">美元 · 最新交易日</div></div></div></div><div class="alerts muted">今日无显著异常信号</div><div class="card"><h2><span class="badge">1</span>行情快照<span class="sub">回答：市场现在往哪个方向走</span></h2><div class="table-wrap"><table><tr><th>币种</th><th class="num">价格</th><th class="num">24h涨跌</th><th class="num">24h成交额</th></tr><tr><td><b>BTC</b></td><td class="num">$77,195</td><td class="num"><span class="pill down">-0.26%</span></td><td class="num">$265.6 亿</td></tr><tr><td><b>ETH</b></td><td class="num">$2,389</td><td class="num"><span class="pill down">-1.25%</span></td><td class="num">$127.5 亿</td></tr><tr><td><b>SOL</b></td><td class="num">$100.10</td><td class="num"><span class="pill flat">+0.00%</span></td><td class="num">$28.5 亿</td></tr><tr><td><b>BNB</b></td><td class="num">$688.31</td><td class="num"><span class="pill up">+0.33%</span></td><td class="num">$7.8 亿</td></tr><tr><td><b>XRP</b></td><td class="num">$1.35</td><td class="num"><span class="pill down">-0.28%</span></td><td class="num">$22.5 亿</td></tr><tr><td><b>DOGE</b></td><td class="num">$0.0816</td><td class="num"><span class="pill down">-0.11%</span></td><td class="num">$5.4 亿</td></tr></table></div><p class="note">数据源：binance + CoinGecko · USDT 现货</p><div class="interp"><b>解读：</b>BTC 24h -0.26%，报 $77,195；监控币种 1 涨 4 跌；避险情绪主导，短线宜防守</div></div><div class="card"><h2><span class="badge">2</span>衍生品仓位<span class="sub">回答：仓位是否拥挤、有无挤仓风险</span></h2><div class="table-wrap"><table><tr><th>币种</th><th class="num">资金费率</th><th class="num">持仓量</th></tr><tr><td><b>BTC</b></td><td class="num"><span class="up">+0.0071%</span></td><td class="num">$11 万</td></tr><tr><td><b>ETH</b></td><td class="num"><span class="up">+0.0088%</span></td><td class="num">$232 万</td></tr><tr><td><b>SOL</b></td><td class="num"><span class="up">+0.0009%</span></td><td class="num">$867 万</td></tr></table></div><p class="note">数据源：binance · USDT 永续合约；费率绝对值 ≥0.05% 视为仓位拥挤</p><div class="interp"><b>解读：</b>BTC +0.007%（接近中性）；ETH +0.009%（接近中性）；SOL +0.001%（接近中性）。资金费率是永续合约的"仓位情绪费"：持续为负且价格止跌，常是逼空前兆；持续高正值则上方抛压沉重，追多需谨慎。</div></div><div class="card"><h2><span class="badge">3</span>全球市值与主导率<span class="sub">回答：资金在进攻还是避险</span></h2><div class="kpi-row"><div class="kpi"><div class="k">总市值</div><div class="v">$2.62 万亿</div></div><div class="kpi"><div class="k">BTC 主导率</div><div class="v">59.1%</div></div><div class="kpi"><div class="k">市值 24h 变化</div><div class="v"><span class="down">-2.66%</span></div></div></div><div class="interp"><b>解读：</b>总市值 24h -2.66%、BTC 主导率 59.1%：市场避险，资金向 BTC 集中收缩，山寨币波动会更大。</div></div><div class="card"><h2><span class="badge">4</span>市场情绪（恐惧贪婪指数）<span class="sub">回答：市场大众有多贪婪/恐惧</span></h2><div class="kpi-row"><div class="kpi"><div class="k">今日</div><div class="v">65 · Greed</div></div><div class="kpi"><div class="k">昨日</div><div class="v">63 · Greed</div></div></div><div class="gauge"><span class="pin" style="left:65%"></span></div><div class="gauge-scale"><span>极度恐慌 0</span><span>中性 50</span><span>极度贪婪 100</span></div><div class="interp"><b>解读：</b>今日 65 分，较昨日 2（情绪回暖）。贪婪区：情绪升温，追高需谨慎。</div></div><div class="card"><h2><span class="badge">5</span>稳定币资金流<span class="sub">回答：场外子弹在进场还是离场</span></h2><div class="kpi-row"><div class="kpi"><div class="k">稳定币总供应</div><div class="v">$3,101.7 亿</div></div><div class="kpi"><div class="k">较昨日记录</div><div class="v">净销毁 $2.0 亿</div></div></div><div class="table-wrap"><table><tr><th>币种</th><th>名称</th><th class="num">流通量</th></tr><tr><td><b>USDT</b></td><td>Tether</td><td class="num">$1,833.8 亿</td></tr><tr><td><b>USDC</b></td><td>USD Coin</td><td class="num">$737.9 亿</td></tr><tr><td><b>USDS</b></td><td>Sky Dollar</td><td class="num">$66.4 亿</td></tr><tr><td><b>DAI</b></td><td>Dai</td><td class="num">$47.7 亿</td></tr><tr><td><b>USDe</b></td><td>Ethena USDe</td><td class="num">$42.4 亿</td></tr></table></div><p class="note">数据源：DefiLlama；总供应上升通常代表场外资金在积累</p><div class="interp"><b>解读：</b>总供应 $3,101.7 亿，较上次记录 净销毁 $2.0 亿。小幅净销毁：资金略有流出。</div></div><div class="card"><h2><span class="badge">6</span>宏观锚（美债/油价）<span class="sub">回答：外部流动性水位在哪里</span></h2><div class="table-wrap"><table><tr><th>指标</th><th class="num">最新值</th><th class="num">变动</th><th class="num">前值</th><th>数据日期</th></tr><tr><td><b>美债10年期收益率</b></td><td class="num"><b>4.66%</b></td><td class="num ">+0.00</td><td class="num">4.66</td><td>09/02/2026</td></tr><tr><td><b>WTI 原油</b></td><td class="num"><b>91.48</b></td><td class="num up">+4.45</td><td class="num">87.03</td><td>2026-Aug-31</td></tr></table></div><p class="note">数据源：US Treasury / EIA（每日更新，约滞后1个交易日）</p><div class="interp"><b>解读：</b>美债10年期收益率 4.66%（+0.0 bp）：收益率高位，无风险利率对风险资产估值持续施压；WTI 原油 $91.48（+4.45）：油价急动，通胀与地缘风险升温，避险情绪或外溢至币市。美债收益率与油价是币市的外部水位：收益率快速上行常压制估值，油价飙升常伴地缘避险，两者异动时币市波动会放大。</div></div><div class="card"><h2><span class="badge">7</span>合约多空结构<span class="sub">回答：散户和主力各自押注哪边</span></h2><div class="table-wrap"><table><tr><th>币种</th><th class="num">账户多空比（散户）</th><th class="num">大户持仓比（主力）</th><th class="num">主动买卖比（即时）</th></tr><tr><td><b>BTC</b></td><td class="num"><span class="rbar"><i style="width:54.8%"></i></span><span class="up">1.21 : 1</span></td><td class="num"><span class="rbar"><i style="width:66.4%"></i></span><span class="up">1.98 : 1</span></td><td class="num"><span class="rbar"><i style="width:56.6%"></i></span><span class="up">1.30 : 1</span></td></tr><tr><td><b>ETH</b></td><td class="num"><span class="rbar"><i style="width:73.3%"></i></span><span class="up">2.75 : 1</span></td><td class="num"><span class="rbar"><i style="width:61.2%"></i></span><span class="up">1.58 : 1</span></td><td class="num"><span class="rbar"><i style="width:60.2%"></i></span><span class="up">1.51 : 1</span></td></tr></table></div><p class="note">数据源：Binance Futures · 最近1小时；绿色条长为多头占比，&gt;1 偏多，&lt;1 偏空</p><div class="interp"><b>解读：</b>BTC：账户多空比 1.21（多头占优）：大户持仓比 1.98（大户偏多）：主动买卖比 1.30（主动买入占优）；ETH：账户多空比 2.75（多头占优）：大户持仓比 1.58（大户偏多）：主动买卖比 1.51（主动买入占优）。三个比值交叉验证更可靠：散户看账户比、主力看大户持仓比、即时情绪看主动买卖比。</div></div><div class="card"><h2><span class="badge">8</span>现货 ETF 资金流<span class="sub">回答：机构资金在净买入还是净卖出</span></h2><div class="table-wrap"><table><tr><th>品类</th><th>交易日</th><th class="num">单日净流量</th></tr><tr><td><b>BTC 现货ETF</b></td><td>02 Sep 2026</td><td class="num"><span class="fbar"><i style="width:1.8%;background:#d93a3a"></i></span><b class="down">-$1430 万</b>（净流出）</td></tr><tr><td><b>ETH 现货ETF</b></td><td>02 Sep 2026</td><td class="num"><span class="fbar"><i style="width:2.9%;background:#d93a3a"></i></span><b class="down">-$2350 万</b>（净流出）</td></tr></table></div><p class="note">数据源：Farside · 金额按中文习惯显示（亿/万）；现货 ETF 是机构资金进出的主通道</p><div class="interp"><b>解读：</b>BTC 现货ETF 02 Sep 2026 -$1430 万（净流出）：温和净流出；ETH 现货ETF 02 Sep 2026 -$2350 万（净流出）：温和净流出。现货 ETF 是传统资金进入币市的主通道，持续净流入/流出代表机构级趋势性配置。</div></div><div class="card"><h2><span class="badge">9</span>今日要闻（已处理）<span class="sub">回答：舆论场在发生什么</span></h2><!-- AGENT_DIGEST_PLACEHOLDER -->
+<div style="background:#f2f7ff;border:1px solid #c7d2fe;border-radius:10px;padding:14px 18px;margin-bottom:14px">
+
+<!-- ① 今日综合研判 -->
+<div style="background:#fff;border:1px solid #c7d2fe;border-radius:10px;padding:12px 16px;margin-bottom:12px">
+<div style="font-weight:700;font-size:15px;color:#4f46e5;margin-bottom:6px">今日综合研判</div>
+<div style="font-size:14px;line-height:1.7;color:#1e293b">
+<p style="margin:0 0 6px">当前市场呈现"宏观压顶 + 地缘升温"的双重格局。宏观层面，全球债市遭遇30年来罕见同步抛售，美日英长债收益率飙升至数十年高位，美债10年期收益率一度触及4.78%，日本10年期国债收益率时隔30年突破3%，无风险利率上行持续压制风险资产估值。CME FedWatch显示9月加息概率仍超40%，且美联储理事Barr公开表示若通胀不降温将支持加息，货币环境整体偏紧。</p>
+<p style="margin:0 0 6px">地缘层面，美伊冲突骤然升级，美国对伊朗实施新一轮打击，伊朗反击袭击约旦美军基地，国际油价单日暴涨超5%，布伦特突破94美元、WTI站上90美元，霍尔木兹海峡航运受阻。俄乌方面，普京宣布谈判停滞，准备对乌能源设施进行大规模打击，欧洲安全局势再度紧张。全球避险情绪全面升温。</p>
+<p style="margin:0">加密市场方面，BTC 24h仅跌0.26%报$77,195，表现出相对抗跌性，资金向BTC集中（主导率59.1%），但总市值24h跌2.66%，山寨币承压明显尤其是ETH跌1.25%。BTC和ETH ETF连续净流出，合约多空比显示散户和主力均偏多，但需警惕多头拥挤在宏观风险释放时被踩踏。</p>
+</div>
+<div style="background:#eef2ff;border-left:4px solid #6366f1;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:14px;font-weight:600;color:#4338ca">
+策略倾向：防守为主，降低杠杆，控制仓位。关注BTC $75,000-76,000支撑位，若跌破需警惕加速下行；$80,000为短期压力。9月16日FOMC决议前波动率料将放大，美伊冲突走向和全球债市企稳信号是近期最关键的两个观察变量。
+</div>
+</div>
+
+<!-- ② AI 要闻简报 -->
+<div style="font-weight:700;font-size:15px;color:#1e3a8a;margin-bottom:8px">AI 要闻简报</div>
+
+<div style="margin-bottom:8px;font-size:14px">
+<span style="display:inline-block;background:#f1ecfd;color:#6d3fc0;border-radius:6px;padding:1px 8px;font-weight:600;margin-right:6px">国际局势</span>
+<strong>伊朗袭击沙特油轮致两名菲律宾船员遇难</strong> — 沙特方面指控伊朗袭击其油轮，造成两名菲律宾船员死亡。这是美伊冲突以来首次出现平民伤亡事件，意味着冲突已从军事目标蔓延至民用航运。<br>
+<a href="https://www.bbc.co.uk/news/articles/cx2zxgg4mx9o" style="color:#1a56db;font-size:13px" target="_blank">来源</a>
+<span style="color:#4338ca;font-weight:600;margin-left:6px;font-size:13px">影响判断：</span><span style="font-size:13px">霍尔木兹海峡航运安全受直接威胁，油价短期高位运行，避险情绪利好BTC但压制整体加密风险偏好。</span>
+</div>
+
+<div style="margin-bottom:8px;font-size:14px">
+<span style="display:inline-block;background:#f1ecfd;color:#6d3fc0;border-radius:6px;padding:1px 8px;font-weight:600;margin-right:6px">国际局势</span>
+<strong>特朗普称美伊新一轮冲突"不会持续太久"</strong> — 特朗普就美伊新一轮交火发表评论，称冲突不会持续太久，暗示美方或寻求控制冲突范围。但伊朗方面保留进一步升级的选项，包括牵制霍尔木兹海峡航运。<br>
+<a href="https://www.aljazeera.com/news/liveblog/2026/9/3/iran-war-live-trump-says-renewed-us-iran-clashes-will-not-last-too" style="color:#1a56db;font-size:13px" target="_blank">来源</a>
+<span style="color:#4338ca;font-weight:600;margin-left:6px;font-size:13px">影响判断：</span><span style="font-size:13px">短期冲突或可控，但地缘风险溢价仍在，加密货币作为"数字黄金"的避险叙事短期内得到强化。</span>
+</div>
+
+<div style="margin-bottom:8px;font-size:14px">
+<span style="display:inline-block;background:#e7f0ff;color:#2563eb;border-radius:6px;padding:1px 8px;font-weight:600;margin-right:6px">宏观流动性</span>
+<strong>全球债券抛售潮加剧，多国收益率创数十年新高</strong> — 美英日德澳等多国长期国债收益率集体飙升至数十年高位。日本10年期国债收益率时隔30年突破3%，美国10年期收益率一度升至4.78%，英国30年期收益率突破5%。通胀担忧与AI公司债发债潮叠加供给压力是主因。<br>
+<a href="https://www.cnbc.com/2026/09/02/global-bond-yields-inflation-rates.html" style="color:#1a56db;font-size:13px" target="_blank">来源</a>
+<span style="color:#4338ca;font-weight:600;margin-left:6px;font-size:13px">影响判断：</span><span style="font-size:13px">全球利率上行对加密市场估值构成系统性压制，风险资产首当其冲，若持续将削弱加密市场上行动能。</span>
+</div>
+
+<div style="margin-bottom:8px;font-size:14px">
+<span style="display:inline-block;background:#e7f0ff;color:#2563eb;border-radius:6px;padding:1px 8px;font-weight:600;margin-right:6px">宏观流动性</span>
+<strong>纽约联储威廉姆斯：收益率飙升源于经济前景强劲</strong> — 纽约联储主席威廉姆斯表示，近期长债收益率飙升反映的是经济前景改善而非通胀失控，美联储对此持"欢迎"态度，暗示短期内不会通过政策干预来压制收益率曲线。<br>
+<a href="https://www.cnbc.com/2026/09/02/new-york-feds-williams-says-yield-surge-due-to-strong-economic-prospects.html" style="color:#1a56db;font-size:13px" target="_blank">来源</a>
+<span style="color:#4338ca;font-weight:600;margin-left:6px;font-size:13px">影响判断：</span><span style="font-size:13px">美联储对收益率的"容忍"姿态意味着高利率环境将持续更久，加密市场流动性改善预期被推迟。</span>
+</div>
+
+<div style="margin-bottom:8px;font-size:14px">
+<span style="display:inline-block;background:#fff1e2;color:#b96a10;border-radius:6px;padding:1px 8px;font-weight:600;margin-right:6px">监管政策</span>
+<strong>新泽西请求最高法院裁决预测市场体育博彩监管权</strong> — 新泽西州成为首个请求美国最高法院裁决预测市场（如Kalshi、Polymarket）监管权的州，核心争议在于CFTC和州博彩监管机构之间的管辖边界。<br>
+<a href="https://www.theblock.co/news/regulation/2026-09-02-new-jersey-asks-supreme-court-to-decide-who-regulates-sports-betting-on-prediction-markets-413398" style="color:#1a56db;font-size:13px" target="_blank">来源</a>
+<span style="color:#4338ca;font-weight:600;margin-left:6px;font-size:13px">影响判断：</span><span style="font-size:13px">若最高法院受理，将对链上预测市场产生重大影响，利好合规化方向，短期提振Polymarket等板块关注度。</span>
+</div>
+
+<div style="margin-bottom:8px;font-size:14px">
+<span style="display:inline-block;background:#e7f0ff;color:#2563eb;border-radius:6px;padding:1px 8px;font-weight:600;margin-right:6px">宏观流动性</span>
+<strong>美联储理事Barr：若通胀不降温将支持加息</strong> — 美联储理事Barr发表鹰派言论，称若通胀数据未能持续改善，他将支持加息。此前CME FedWatch显示9月加息25bp概率一度达66%。<br>
+<a href="https://www.cnbc.com/2026/09/01/fed-governor-barr-says-hell-support-rate-hike-if-inflation-doesnt-ease.html" style="color:#1a56db;font-size:13px" target="_blank">来源</a>
+<span style="color:#4338ca;font-weight:600;margin-left:6px;font-size:13px">影响判断：</span><span style="font-size:13px">9月FOMC加息预期升温，压制风险资产估值，加密市场短期承压，需关注9月16日决议前最后一批通胀数据。</span>
+</div>
+
+<!-- ③ 近期热门大事 -->
+<div style="font-weight:700;font-size:15px;color:#1e3a8a;margin:14px 0 8px">近期热门大事（近3-7天）</div>
+
+<div style="margin-bottom:6px;font-size:14px">
+<strong style="color:#4f46e5">🔹 美联储/9月FOMC：</strong> 9月FOMC会议将于9月16日召开。CME FedWatch显示市场对9月加息25bp的概率分歧较大，约44%-66%（不同数据源有差异，反映市场对通胀路径的不确定性）。美联储理事Barr公开表态若通胀不降温将支持加息，但纽约联储威廉姆斯则对收益率上升持"欢迎"态度，显示内部存在分歧。9月2日公布的预测市场数据暗示就业增长可能反弹，为加息提供支撑。
+</div>
+
+<div style="margin-bottom:6px;font-size:14px">
+<strong style="color:#4f46e5">🔹 美伊冲突（中东）：</strong> 美国于9月1日对伊朗实施新一轮打击，伊朗随即反击，对约旦美军基地发射弹道导弹和无人机，并保留牵制霍尔木兹海峡航运的选项。伊朗袭击沙特油轮造成两名菲律宾船员遇难，为冲突以来首次平民伤亡。特朗普称冲突"不会持续太久"，但局势仍高度紧张。国际油价暴涨，WTI原油单日涨5.2%站上90美元，布伦特突破94美元。霍尔木兹海峡是全球最重要的石油运输通道，一旦受阻将冲击全球能源供应。
+</div>
+
+<div style="margin-bottom:6px;font-size:14px">
+<strong style="color:#4f46e5">🔹 俄乌局势：</strong> 普京在上合组织比什凯克峰会后的记者会上宣布乌克兰问题谈判进程"冻结"，指示俄军准备对乌克兰能源设施实施大规模打击。普京强调乌境内任何军事设施均为俄军合法打击目标，包括与英国相关的设施。欧盟与北约誓言加大对俄施压，回应俄罗斯在德国境内的"新升级"行动。普京同时表示不会进行新一轮动员，但谈判重启前景渺茫。
+</div>
+
+<div style="margin-bottom:6px;font-size:14px">
+<strong style="color:#4f46e5">🔹 全球债券市场：</strong> 全球债市正经历30年来罕见的同步抛售潮。日本10年期国债收益率时隔30年首度突破3%（最高升至3.015%），30年期收益率升至4.18%以上创历史新高。美国10年期收益率一度升至4.78%创近20个月新高，英国30年期收益率突破5%，德国、法国、澳大利亚等经济体长债收益率亦纷纷站上数十年高点。主因包括通胀预期升温、AI公司大规模发债带来的供给压力、以及发达经济体财政刚性扩张。
+</div>
+
+<div style="margin-bottom:6px;font-size:14px">
+<strong style="color:#4f46e5">🔹 加密行业动态：</strong> ①俄罗斯加密货币新规9月1日生效，仅BTC、ETH、USDT可合规交易，年购买上限30万卢布（约$3,500），允许持牌平台交易但禁止境内支付；②FBI缴获56万美元与哈马斯相关加密货币并接管募捐网站；③Coinbase在加拿大推出受监管加密衍生品；④日本Remixpoint清仓ETH和XRP，转向BTC-only财库策略；⑤怀俄明州将Chainlink储备验证引入州发行稳定币；⑥Kraken母公司Payward将IPO推迟至2027年中；⑦前Elon Musk旗下xAI和X的CFO Anthony Armstrong加入Coinbase董事会。
+</div>
+
+</div>
+<!-- END AGENT_DIGEST_PLACEHOLDER --><p class="note">去重后 50 条 | 宏观流动性 7 · 国际局势 5 · 监管政策 5 · 机构与ETF 1 · 行情动向 1 · 其他 31</p><div class="news-item"><span class="tag tag-c3">宏观流动性</span><a href="https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260827a.htm" target="_blank">Federal Reserve Board issues enforcement action with former employee of Banco Popular de Puerto Rico</a><span class="time">美联储官方 | Thu, 27 Aug 2026 15:00:00</span></div><div class="news-item"><span class="tag tag-c3">宏观流动性</span><a href="https://www.cnbc.com/2026/09/02/new-york-feds-williams-says-yield-surge-due-to-strong-economic-prospects.html" target="_blank">New York Fed's Williams says yield surge due to strong economic prospects</a><span class="time">CNBC Finance | Wed, 02 Sep 2026 17:21:59</span></div><div class="news-item"><span class="tag tag-c1">国际局势</span><a href="https://www.bbc.co.uk/news/articles/cx2zxgg4mx9o?at_medium=RSS&at_campaign=rss" target="_blank">Iranian attack on Saudi tanker killed two Filipino sailors, Saudi Arabia says</a><span class="time">BBC World | Wed, 02 Sep 2026 17:33:45</span></div><div class="news-item"><span class="tag tag-c1">国际局势</span><a href="https://www.aljazeera.com/news/liveblog/2026/9/3/iran-war-live-trump-says-renewed-us-iran-clashes-will-not-last-too?traffic_source=rss" target="_blank">Iran war live: Trump says renewed US-Iran clashes will not last ‘too long’</a><span class="time">Al Jazeera | Thu, 03 Sep 2026 00:00:00</span></div><div class="news-item"><span class="tag tag-c3">宏观流动性</span><a href="https://www.cnbc.com/2026/09/02/global-bond-yields-inflation-rates.html" target="_blank">Global bond rout gathers pace as inflation fears mount</a><span class="time">CNBC World | Wed, 02 Sep 2026 14:38:28</span></div><div class="news-item"><span class="tag tag-c2">监管政策</span><a href="https://www.theblock.co/news/regulation/2026-09-02-new-jersey-asks-supreme-court-to-decide-who-regulates-sports-betting-on-prediction-markets-413398" target="_blank">New Jersey asks Supreme Court to decide who regulates sports betting on prediction markets</a><span class="time">The Block | Wed, 02 Sep 2026 18:18:28</span></div><div class="news-item"><span class="tag tag-c3">宏观流动性</span><a href="https://www.cnbc.com/2026/09/02/berkshire-ceo-says-japanese-bond-yields-not-a-challenge-for-trading-houses.html" target="_blank">Berkshire CEO Greg Abel says Japanese bond yields not a challenge for trading houses right now</a><span class="time">CNBC Finance | Wed, 02 Sep 2026 11:09:15</span></div><div class="news-item"><span class="tag tag-c2">监管政策</span><a href="https://www.bbc.co.uk/news/articles/c1mvn2yp9n2o?at_medium=RSS&at_campaign=rss" target="_blank">Protests in Spain over government's handling of Ceuta migrant crisis</a><span class="time">BBC World | Wed, 02 Sep 2026 21:34:27</span></div><details style="margin-top:12px"><summary style="cursor:pointer;color:#6b7280;font-size:13px">展开全部源链接（50 条）</summary><div class="news-source">CoinDesk</div><div class="news-item"><a href="https://www.coindesk.com/business/2026/09/02/doj-says-hamas-crypto-seizures-reached-usd560-000-as-fbi-took-over-fundraising-sites" target="_blank">DOJ says Hamas crypto seizures reached $560,000 as FBI took over fundraising sites</a><span class="time">Wed, 02 Sep 2026 21:24:26</span></div><div class="news-item"><a href="https://www.coindesk.com/business/2026/09/02/kraken-parent-payward-pushes-ipo-back-to-mid-2027-at-earliest" target="_blank">Kraken parent Payward delays IPO to second quarter of 2027 at earliest</a><span class="time">Wed, 02 Sep 2026 20:08:34</span></div><div class="news-item"><a href="https://www.coindesk.com/news-analysis/2026/09/02/crypto-made-new-friends-in-u-s-primaries-but-focus-now-shifts-to-general-election" target="_blank">Crypto made new friends in U.S. primaries, but focus now shifts to general election</a><span class="time">Wed, 02 Sep 2026 17:39:00</span></div><div class="news-item"><a href="https://www.coindesk.com/policy/2026/09/02/new-jersey-becomes-first-state-to-ask-supreme-court-to-weigh-in-on-prediction-markets" target="_blank">New Jersey becomes first state to ask Supreme Court to weigh in on prediction markets</a><span class="time">Wed, 02 Sep 2026 17:23:48</span></div><div class="news-item"><a href="https://www.coindesk.com/coindesk-indices/2026/09/02/crypto-long-and-short-crypto-vcs-are-mistaking-consensus-for-discipline" target="_blank">Crypto Long & Short: Crypto VCs are mistaking consensus for discipline</a><span class="time">Wed, 02 Sep 2026 15:15:02</span></div><div class="news-source">Cointelegraph</div><div class="news-item"><a href="https://cointelegraph.com/news/us-officials-crowdstrike-malware-stealing-crypto?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">US officials work with CrowdStrike to fight malware behind crypto theft</a><span class="time">Wed, 02 Sep 2026 21:27:15</span></div><div class="news-item"><a href="https://cointelegraph.com/news/coinbase-launches-regulated-crypto-derivatives-in-canada?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Coinbase launches regulated crypto derivatives in Canada</a><span class="time">Wed, 02 Sep 2026 20:55:55</span></div><div class="news-item"><a href="https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Here’s what happened in crypto today</a><span class="time">Wed, 02 Sep 2026 19:11:15</span></div><div class="news-item"><a href="https://cointelegraph.com/news/new-jersey-supreme-court-kalshi-prediction-markets-cftc?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">New Jersey officials petition US Supreme Court over prediction markets</a><span class="time">Wed, 02 Sep 2026 18:55:41</span></div><div class="news-item"><a href="https://cointelegraph.com/news/wyoming-chainlink-onchain-reserves-of-state-issued-stable-token?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Wyoming adds Chainlink reserve verification to state-issued stable token</a><span class="time">Wed, 02 Sep 2026 18:38:18</span></div><div class="news-source">Decrypt</div><div class="news-item"><a href="https://decrypt.co/377232/anthropic-security-claude-ai-hacks" target="_blank">Anthropic Admits Security Failures Behind Claude Hacking Incidents</a><span class="time">Wed, 02 Sep 2026 23:46:04</span></div><div class="news-item"><a href="https://decrypt.co/377231/afterquery-ai-tradining-data-unicorn-y-combinator" target="_blank">An AI Training Data Startup Just Became Y Combinator's Fastest-Ever Unicorn</a><span class="time">Wed, 02 Sep 2026 23:16:04</span></div><div class="news-item"><a href="https://decrypt.co/377230/fbi-seizes-560k-crypto-hamas" target="_blank">FBI Seizes $560K in Crypto Bound for Hamas, Takes Over Fundraising Sites</a><span class="time">Wed, 02 Sep 2026 22:47:06</span></div><div class="news-item"><a href="https://decrypt.co/377228/remixpoint-xrp-ethereum-bitcoin-only" target="_blank">Japan’s Remixpoint Dumps Ethereum, XRP in Shift to Bitcoin-Only Treasury</a><span class="time">Wed, 02 Sep 2026 21:31:05</span></div><div class="news-item"><a href="https://decrypt.co/377225/pentagon-ai-official-sold-millions-perplexity-stock" target="_blank">Top Pentagon AI Official Sold Millions in Perplexity Stock, Disclosures Show</a><span class="time">Wed, 02 Sep 2026 20:46:04</span></div><div class="news-source">The Block</div><div class="news-item"><a href="https://www.theblock.co/news/business/2026-09-02-anthony-armstrong-former-cfo-elon-musk-xai-x-joins-coinbase-board-413405" target="_blank">Anthony Armstrong, former CFO at Elon Musk’s xAI and X, joins Coinbase board</a><span class="time">Wed, 02 Sep 2026 21:03:53</span></div><div class="news-item"><a href="https://www.theblock.co/news/regulation/2026-09-02-new-jersey-asks-supreme-court-to-decide-who-regulates-sports-betting-on-prediction-markets-413398" target="_blank">New Jersey asks Supreme Court to decide who regulates sports betting on prediction markets</a><span class="time">Wed, 02 Sep 2026 18:18:28</span></div><div class="news-item"><a href="https://www.theblock.co/news/markets/2026-09-02-memecoin-shenanigans-nasdaq-microcap-mushroom-seller-farmmi-413374" target="_blank">Memecoin shenanigans spill into Nasdaq as microcap mushroom seller Farmmi surges 350%</a><span class="time">Wed, 02 Sep 2026 17:40:13</span></div><div class="news-item"><a href="https://www.theblock.co/news/ecosystems/2026-09-02-securitize-and-socios-team-up-to-tokenize-equity-in-pro-sports-teams-413378" target="_blank">Securitize and Socios team up to tokenize equity in pro sports teams</a><span class="time">Wed, 02 Sep 2026 17:17:59</span></div><div class="news-item"><a href="https://www.theblock.co/news/ecosystems/2026-09-02-world-provekit-zero-knowledge-identity-proving-toolkit-413364" target="_blank">World open-sources ProveKit, a zero-knowledge identity proving toolkit</a><span class="time">Wed, 02 Sep 2026 16:00:03</span></div><div class="news-source">美联储官方</div><div class="news-item"><a href="https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260827a.htm" target="_blank">Federal Reserve Board issues enforcement action with former employee of Banco Popular de Puerto Rico</a><span class="time">Thu, 27 Aug 2026 15:00:00</span></div><div class="news-item"><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260825a.htm" target="_blank">Minutes of the Board's discount rate meetings on July 20 and July 29, 2026</a><span class="time">Tue, 25 Aug 2026 18:00:00</span></div><div class="news-item"><a href="https://www.federalreserve.gov/newsevents/pressreleases/orders20260820a.htm" target="_blank">Federal Reserve Board announces approval of application by National Westminster Bank Plc</a><span class="time">Thu, 20 Aug 2026 20:00:00</span></div><div class="news-item"><a href="https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260820a.htm" target="_blank">Federal Reserve Board issues enforcement actions with former employee of Regions Bank and former employee of United Community Bank</a><span class="time">Thu, 20 Aug 2026 15:00:00</span></div><div class="news-item"><a href="https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260820b.htm" target="_blank">Federal Reserve Board issues enforcement action with SouthPoint Bancshares, Inc. and announces termination of enforcement action with Deutsche Bank AG, DB USA Corporation, and Deutsche Bank AG New York Branch</a><span class="time">Thu, 20 Aug 2026 15:00:00</span></div><div class="news-source">CNBC Finance</div><div class="news-item"><a href="https://www.cnbc.com/2026/09/02/new-york-feds-williams-says-yield-surge-due-to-strong-economic-prospects.html" target="_blank">New York Fed's Williams says yield surge due to strong economic prospects</a><span class="time">Wed, 02 Sep 2026 17:21:59</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/02/berkshire-ceo-says-japanese-bond-yields-not-a-challenge-for-trading-houses.html" target="_blank">Berkshire CEO Greg Abel says Japanese bond yields not a challenge for trading houses right now</a><span class="time">Wed, 02 Sep 2026 11:09:15</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/02/nepal-tibet-floods-adventure-tourism-economy.html" target="_blank">Nepal’s mountain tourism industry faces ‘serious warning’ after Himalayan flood disaster</a><span class="time">Wed, 02 Sep 2026 09:23:18</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/01/prediction-market-traders-think-job-creation-rebounded-in-august.html" target="_blank">Prediction market traders think job creation rebounded in August</a><span class="time">Tue, 01 Sep 2026 18:57:14</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/01/fed-governor-barr-says-hell-support-rate-hike-if-inflation-doesnt-ease.html" target="_blank">Fed Governor Barr says he'll support rate hike if inflation doesn't ease</a><span class="time">Tue, 01 Sep 2026 14:01:27</span></div><div class="news-source">BBC World</div><div class="news-item"><a href="https://www.bbc.co.uk/news/articles/cx2zxgg4mx9o?at_medium=RSS&at_campaign=rss" target="_blank">Iranian attack on Saudi tanker killed two Filipino sailors, Saudi Arabia says</a><span class="time">Wed, 02 Sep 2026 17:33:45</span></div><div class="news-item"><a href="https://www.bbc.co.uk/news/articles/c1mvn2yp9n2o?at_medium=RSS&at_campaign=rss" target="_blank">Protests in Spain over government's handling of Ceuta migrant crisis</a><span class="time">Wed, 02 Sep 2026 21:34:27</span></div><div class="news-item"><a href="https://www.bbc.co.uk/news/articles/ce9e810pg7ko?at_medium=RSS&at_campaign=rss" target="_blank">EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany</a><span class="time">Wed, 02 Sep 2026 16:49:00</span></div><div class="news-item"><a href="https://www.bbc.co.uk/news/articles/c62j50n131mo?at_medium=RSS&at_campaign=rss" target="_blank">Rosenberg: Putin's veiled threat to UK part of Russia's campaign against West</a><span class="time">Wed, 02 Sep 2026 11:47:11</span></div><div class="news-item"><a href="https://www.bbc.co.uk/news/videos/cy8z32v7130o?at_medium=RSS&at_campaign=rss" target="_blank">Watch: Jury still unable to reach unanimous decision in Lindsay Clancy case</a><span class="time">Wed, 02 Sep 2026 20:12:32</span></div><div class="news-source">Al Jazeera</div><div class="news-item"><a href="https://www.aljazeera.com/news/liveblog/2026/9/3/iran-war-live-trump-says-renewed-us-iran-clashes-will-not-last-too?traffic_source=rss" target="_blank">Iran war live: Trump says renewed US-Iran clashes will not last ‘too long’</a><span class="time">Thu, 03 Sep 2026 00:00:00</span></div><div class="news-item"><a href="https://www.aljazeera.com/news/2026/9/2/thousands-protest-in-spain-as-ceutas-migrant-crisis-festers-a-month-on?traffic_source=rss" target="_blank">Thousands protest in Spain as Ceuta’s migration crisis festers a month on</a><span class="time">Wed, 02 Sep 2026 23:28:18</span></div><div class="news-item"><a href="https://www.aljazeera.com/video/newsfeed/2026/9/2/aje-onl-nf_did-doge-ruin-americas-food-safety-system-020926?traffic_source=rss" target="_blank">Did DOGE ruin America’s food safety system?</a><span class="time">Wed, 02 Sep 2026 23:25:49</span></div><div class="news-item"><a href="https://www.aljazeera.com/economy/2026/9/2/openai-faces-new-lawsuits-over-tumbler-ridge-mass-shooting-tragedy?traffic_source=rss" target="_blank">OpenAI faces new lawsuits over Tumbler Ridge mass shooting tragedy</a><span class="time">Wed, 02 Sep 2026 22:15:32</span></div><div class="news-item"><a href="https://www.aljazeera.com/news/2026/9/2/republican-senator-calls-on-trump-to-fire-secretary-of-defence-hegseth?traffic_source=rss" target="_blank">Republican senator calls on Trump to fire Secretary of Defence Hegseth</a><span class="time">Wed, 02 Sep 2026 21:37:41</span></div><div class="news-source">CNBC World</div><div class="news-item"><a href="https://www.cnbc.com/2026/09/02/global-bond-yields-inflation-rates.html" target="_blank">Global bond rout gathers pace as inflation fears mount</a><span class="time">Wed, 02 Sep 2026 14:38:28</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/02/trump-xi-summit-iran-china-trade-elections.html" target="_blank">Trump and Xi are set to meet in DC. Why some China watchers have low expectations</a><span class="time">Wed, 02 Sep 2026 22:10:15</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/03/india-nifty-sensex-manufacturing-economy-gdp.html" target="_blank">Inside India newsletter: India’s economic growth is smashing forecasts, but its biggest stocks aren't feeling the love</a><span class="time">Thu, 03 Sep 2026 00:08:50</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/02/greer-trade-house-republicans-trump.html" target="_blank">USTR's Greer huddles with House Republicans amid Trump trade spats</a><span class="time">Wed, 02 Sep 2026 20:50:51</span></div><div class="news-item"><a href="https://www.cnbc.com/2026/09/02/doj-states-undocumented-immigrants-dhs-funds.html" target="_blank">States now must report undocumented immigrants to DHS or risk federal funding, DOJ says</a><span class="time">Wed, 02 Sep 2026 18:25:42</span></div><div class="news-source">Reddit Crypto</div><div class="news-item"><a href="https://www.reddit.com/r/CryptoCurrency/comments/1vr7srb/daily_crypto_discussion_august_17_2026_gmt0/" target="_blank">Daily Crypto Discussion - August 17, 2026 (GMT+0)</a><span class="time">2026-08-17T23:01:24+00:00</span></div><div class="news-item"><a href="https://www.reddit.com/r/CryptoCurrency/comments/1ufkg7g/arbitrum_to_minimize_arbitrum_nova_moons_need_to/" target="_blank">Arbitrum to minimize Arbitrum Nova - Moons need to bridged</a><span class="time">2026-06-25T19:46:27+00:00</span></div><div class="news-item"><a href="https://www.reddit.com/r/CryptoCurrency/comments/1w50c0l/rich_dad_poor_dad_author_says_he_is_12_billion_in/" target="_blank">Rich Dad Poor Dad author says he is $1.2 billion in debt</a><span class="time">2026-09-02T04:42:53+00:00</span></div><div class="news-item"><a href="https://www.reddit.com/r/CryptoCurrency/comments/1w5qhcs/kraken_blocked_my_withdrawals_because_scammers/" target="_blank">Kraken blocked my withdrawals because scammers poisoned my wallet address. Their own support explained the mechanics.</a><span class="time">2026-09-02T23:15:04+00:00</span></div><div class="news-item"><a href="https://www.reddit.com/r/CryptoCurrency/comments/1w4z1o8/donald_trump_jr_now_profits_from_both_sides_of/" target="_blank">Donald Trump Jr. now profits from both sides of the US Kalshi, Polymarket rivalry</a><span class="time">2026-09-02T03:37:10+00:00</span></div><div class="news-source">Reddit Bitcoin</div><p class="err">抓取失败：429 Client Error: Too Many Requests for url: https://www.reddit.com/r/Bitcoin/hot/.rss</p></details></div><footer>免费数据源：ccxt/交易所公开接口 · CoinGecko · alternative.me · DefiLlama · US Treasury · EIA · Binance Futures · Farside · RSS</footer></div></body></html>

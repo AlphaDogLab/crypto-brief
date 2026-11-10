@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>加密货币盘中监控 · 2026-11-11 06:05</title><style>
+:root {
+  --bg:#f4f6fb; --surface:#ffffff; --ink:#1c2333; --muted:#6b7485;
+  --rule:#e7eaf2; --accent:#2563eb; --accent-soft:#eaf1fe;
+  --up:#0a9e5c; --up-soft:#e5f6ee; --down:#d93a3a; --down-soft:#fdeaea;
+  --warn-bg:#fff8e6; --warn-bd:#f0d489;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Noto Sans CJK SC","WenQuanYi Micro Hei","Microsoft YaHei",system-ui,sans-serif;
+  font-size:15px; line-height:1.65; }
+.wrap { max-width:920px; margin:0 auto; padding:28px 20px 56px; }
+/* 顶部横幅 */
+.hero { background:linear-gradient(135deg,#0e1e46 0%,#1e3a8a 55%,#3b5bd6 100%);
+  border-radius:18px; padding:26px 28px 24px; color:#fff;
+  box-shadow:0 8px 24px rgba(20,40,110,.18); }
+.hero h1 { font-size:24px; margin:0; letter-spacing:.5px; }
+.hero .meta { color:#c3d2ff; font-size:13px; margin-top:6px; }
+.hero-kpis { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.hk { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.20);
+  border-radius:12px; padding:10px 16px; min-width:132px; }
+.hk .k { font-size:12px; color:#c3d2ff; }
+.hk .v { font-size:17px; font-weight:700; margin-top:2px; font-variant-numeric:tabular-nums; }
+.hk .d { font-size:12px; margin-top:2px; color:#dbe4ff; }
+.hk .d.up { color:#8ee8b6; } .hk .d.down { color:#ffb4ac; }
+/* 预警 */
+.alerts { background:var(--warn-bg); border:1px solid var(--warn-bd); border-radius:14px;
+  padding:16px 22px; margin-top:18px; }
+.alerts-title { font-weight:700; margin-bottom:8px; color:#8a5a06; }
+.alerts ul { margin:0; padding-left:20px; }
+.alerts li { margin:5px 0; font-size:14px; }
+.alerts.muted { background:#f2f4f9; border-color:#dfe4ee; color:var(--muted); }
+/* 卡片 */
+.card { background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:22px 24px; margin-top:18px; box-shadow:0 1px 3px rgba(16,24,64,.05); }
+.card h2 { display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px;
+  font-size:16px; margin:0 0 6px; }
+.card h2 .badge { flex:0 0 auto; min-width:26px; height:26px; border-radius:8px;
+  background:var(--accent-soft); color:var(--accent); font-size:14px; font-weight:700;
+  display:inline-flex; align-items:center; justify-content:center; padding:0 4px; }
+.sub { flex-basis:100%; color:var(--muted); font-size:12px; font-weight:400; margin:0; }
+/* 表格 */
+.table-wrap { overflow-x:auto; margin-top:8px; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th { color:var(--muted); font-weight:500; font-size:12px; letter-spacing:.03em;
+  border-bottom:2px solid var(--rule); padding:9px 10px; text-align:left; white-space:nowrap; }
+td { padding:10px; border-bottom:1px solid var(--rule); white-space:nowrap;
+  font-variant-numeric:tabular-nums; }
+table tr:hover { background:#f7f9fd; }
+th.num, td.num { text-align:right; }
+.up { color:var(--up); font-weight:600; }
+.down { color:var(--down); font-weight:600; }
+.warn { color:#b8860b; font-weight:600; }
+.note-inline { color:var(--muted); font-size:12px; font-weight:400; }
+.pill { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+.pill.up { background:var(--up-soft); color:var(--up); }
+.pill.down { background:var(--down-soft); color:var(--down); }
+.pill.flat { background:#eef0f5; color:var(--muted); }
+/* KPI 卡 */
+.kpi-row { display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
+.kpi { flex:1 1 160px; background:#f8fafd; border:1px solid var(--rule);
+  border-radius:12px; padding:13px 16px; }
+.kpi .k { color:var(--muted); font-size:12px; }
+.kpi .v { font-size:18px; font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums; }
+.kpi .d { color:var(--muted); font-size:12px; margin-top:4px; }
+/* 解读 */
+.interp { background:#f0f6ff; border:1px solid #d9e6fb; border-left:4px solid var(--accent);
+  border-radius:10px; padding:10px 14px; margin-top:14px; font-size:13.5px; color:#1f3c6d;
+  line-height:1.75; }
+/* 新闻 */
+.tag { display:inline-block; border-radius:6px; padding:2px 9px; font-size:12px;
+  font-weight:600; margin-right:8px; white-space:nowrap; background:#eef0f5; color:#5b6472; }
+.tag-c0 { background:#fdeaea; color:#c22f2f; }
+.tag-c1 { background:#f1ecfd; color:#6d3fc0; }
+.tag-c2 { background:#fff1e2; color:#b96a10; }
+.tag-c3 { background:#e7f0ff; color:#2563eb; }
+.tag-c4 { background:#e0f5f1; color:#0f8a76; }
+.tag-c5 { background:#eef0f5; color:#5b6472; }
+.tag-c6 { background:#e5f6ee; color:#0a9e5c; }
+.news-source { color:#374151; font-size:14px; margin:16px 0 4px; font-weight:600; }
+.news-item { padding:8px 0; border-bottom:1px solid var(--rule); font-size:14px; line-height:1.6; }
+.news-item:last-child { border-bottom:none; }
+.news-item a { color:#1a56db; text-decoration:none; }
+.news-item a:hover { text-decoration:underline; }
+.news-item .time { color:var(--muted); font-size:12px; margin-left:8px; }
+.news-item .impact { background:#4f46e5; color:#fff; border-radius:6px; padding:2px 8px;
+  font-size:11px; margin-left:8px; vertical-align:1px; }
+.news-item .why { color:#475569; font-size:13px; margin-top:4px; padding-left:2px; }
+/* 情绪仪表 */
+.gauge { position:relative; height:14px; border-radius:999px; margin:16px 0 6px;
+  background:linear-gradient(90deg,#d93a3a 0%,#e8933a 30%,#e6c93a 50%,#8cc043 72%,#0a9e5c 100%); }
+.gauge .pin { position:absolute; top:-6px; width:4px; height:26px; background:#1c2333;
+  border-radius:3px; transform:translateX(-50%); box-shadow:0 0 0 2px #fff; }
+.gauge-scale { display:flex; justify-content:space-between; color:var(--muted); font-size:12px; }
+/* 多空比条 */
+.rbar { display:inline-block; width:104px; height:8px; border-radius:999px;
+  background:#f6d7d4; overflow:hidden; vertical-align:middle; margin-right:8px; }
+.rbar i { display:block; height:100%; border-radius:999px;
+  background:linear-gradient(90deg,#22b573,#0a9e5c); }
+/* ETF 流量条 */
+.fbar { display:inline-block; width:140px; height:10px; border-radius:999px;
+  background:#eef0f6; overflow:hidden; vertical-align:middle; margin-right:8px; }
+.fbar i { display:block; height:100%; border-radius:999px; }
+.note { color:var(--muted); font-size:12px; margin:10px 0 0; }
+.err { color:var(--down); font-size:13px; }
+footer { color:var(--muted); font-size:12px; margin-top:30px; text-align:center; line-height:1.8; }
+@media (max-width:640px) {
+  .wrap { padding:16px 12px 40px; }
+  .hero { padding:20px 18px; border-radius:14px; }
+  .card { padding:16px; }
+  .hk { min-width:130px; flex:1 1 auto; }
+}
+@media print {
+  body { background:#fff; }
+  .hero { box-shadow:none; }
+  .card { box-shadow:none; break-inside:avoid; }
+}
+</style></head><body><div class="wrap"><div class="hero"><h1>加密货币盘中监控</h1><div class="meta">生成时间：2026-11-11 06:05 · 早报基线：2026-11-11 05:51 · 每小时更新</div><div class="meta" style="margin-top:8px"><a href="latest.html" style="color:#bfdbfe;text-decoration:none">← 返回今日早报</a> &nbsp;·&nbsp; <a href="index.html" style="color:#bfdbfe;text-decoration:none">归档</a></div><div class="hero-kpis"><div class="hk"><div class="k">BTC</div><div class="v">$73,895</div><div class="d down">自早报 -0.01% · 24h -1.49%</div></div><div class="hk"><div class="k">ETH</div><div class="v">$2,059</div><div class="d down">自早报 -0.01% · 24h -3.13%</div></div><div class="hk"><div class="k">SOL</div><div class="v">$83.42</div><div class="d down">自早报 -0.14% · 24h -3.43%</div></div></div></div><div class="card"><h2><span class="badge">!</span>实时异动<span class="sub">回答：这一小时有没有新出现、必须马上处理的变化</span></h2><div class="alerts muted">本小时无实时异动信号</div></div><div class="card"><h2><span class="badge">1</span>行情与衍生品（实时）<span class="sub">回答：价格和杠杆仓位现在是什么状态</span></h2><div class="table-wrap"><table><tr><th>币种</th><th class="num">现价</th><th class="num">自早报</th><th class="num">24h</th><th class="num">24h 成交额</th></tr><tr><td><b>BTC</b></td><td class="num">$73,895</td><td class="num down">-0.01%</td><td class="num down">-1.49%</td><td class="num">$304.5 亿</td></tr><tr><td><b>ETH</b></td><td class="num">$2,059</td><td class="num down">-0.01%</td><td class="num down">-3.13%</td><td class="num">$136.9 亿</td></tr><tr><td><b>SOL</b></td><td class="num">$83.42</td><td class="num down">-0.14%</td><td class="num down">-3.43%</td><td class="num">$29.7 亿</td></tr><tr><td><b>BNB</b></td><td class="num">$678.33</td><td class="num up">+0.06%</td><td class="num down">-1.65%</td><td class="num">$6.8 亿</td></tr><tr><td><b>XRP</b></td><td class="num">$1.06</td><td class="num down">-0.30%</td><td class="num down">-2.96%</td><td class="num">$22.4 亿</td></tr><tr><td><b>DOGE</b></td><td class="num">$0.0681</td><td class="num down">-0.01%</td><td class="num down">-2.53%</td><td class="num">$4.6 亿</td></tr></table></div><div class="table-wrap"><table><tr><th>币种</th><th class="num">资金费率</th><th class="num">偏离基准</th><th class="num">30 日 z</th><th class="num">持仓量</th><th class="num">24h 持仓变化</th></tr><tr><td><b>BTC</b></td><td class="num">+0.0072%</td><td class="num">-0.0028</td><td class="num">0.20</td><td class="num">$74.3 亿</td><td class="num">+3.88%</td></tr><tr><td><b>ETH</b></td><td class="num">-0.0042%</td><td class="num">-0.0142</td><td class="num">-1.69</td><td class="num">$47.9 亿</td><td class="num">-1.19%</td></tr><tr><td><b>SOL</b></td><td class="num">+0.0020%</td><td class="num">-0.0080</td><td class="num">-0.71</td><td class="num">$8.3 亿</td><td class="num">+5.23%</td></tr></table></div></div><div class="card"><h2><span class="badge">3</span>交易计划状态<span class="sub">回答：早报的剧本演到哪一步、现在该不该动手</span></h2><div class="table-wrap"><table><tr><th>币种</th><th>场景</th><th class="num">现价</th><th class="num">入场</th><th class="num">距触发</th><th class="num">止损</th><th class="num">目标</th><th class="num">盈亏比</th><th>状态</th></tr><tr><td><b>BTC</b></td><td>向上突破</td><td class="num">$73,895</td><td class="num">$85,045</td><td class="num">15.09%</td><td class="num">$82,553</td><td class="num">$87,385</td><td class="num">0.94R</td><td class="">等待触发</td></tr><tr><td><b>BTC</b></td><td>向下失守</td><td class="num">$73,895</td><td class="num">$72,546</td><td class="num">1.86%</td><td class="num">$75,013</td><td class="num">$66,886</td><td class="num">2.29R</td><td class="">等待触发</td></tr><tr><td><b>ETH</b></td><td>向上突破</td><td class="num">$2,059</td><td class="num">$2,584</td><td class="num">25.50%</td><td class="num">$2,477</td><td class="num">$2,807</td><td class="num">2.09R</td><td class="">等待触发</td></tr><tr><td><b>ETH</b></td><td>向下失守</td><td class="num">$2,059</td><td class="num">$2,000</td><td class="num">2.97%</td><td class="num">$2,105</td><td class="num">$1,862</td><td class="num">1.30R</td><td class="">等待触发</td></tr></table></div><p class="note">入场/止损/目标沿用早报，盘中不重算，避免执行漂移。状态用早报以来的 1h K 线高低点顺序判定（同一根线内先判止损），未含未收盘分钟的插针；距离按现价计算。</p></div><div class="card"><h2><span class="badge">4b</span>盘口深度与 CVD（实时）<span class="sub">回答：这一刻进场会不会被挂单墙挡住、主动买盘还在不在</span></h2><div class="table-wrap"><table><tr><th>币种</th><th class="num">盘口中间价</th><th class="num">买卖价差</th><th class="num">覆盖范围</th><th class="num">买 / 卖挂单额</th><th class="num">失衡</th><th>最近挂单墙</th></tr><tr><td><b>BTC</b></td><td class="num">$73,862</td><td class="num">0.01 bp</td><td class="num">±0.17%</td><td class="num">$4,355 万 / $4,161 万</td><td class="num"><span class="up">+2.3%</span><br><span class="warn">仅近端，样本窄</span></td><td>买墙 $73,753<br><span class="note-inline">$268 万 · 距 -0.15% · 占带内 3.1%</span></td></tr><tr><td><b>ETH</b></td><td class="num">$2,058</td><td class="num">0.05 bp</td><td class="num">±0.54%</td><td class="num">$5,267 万 / $5,341 万</td><td class="num"><span class="down">-0.7%</span><br><span class="warn">仅近端，样本窄</span></td><td>卖墙 $2,066<br><span class="note-inline">$213 万 · 距 +0.37% · 占带内 2.0%</span></td></tr><tr><td><b>SOL</b></td><td class="num">$83.38</td><td class="num">1.2 bp</td><td class="num">±2.00%</td><td class="num">$3,986 万 / $3,967 万</td><td class="num"><span class="up">+0.2%</span></td><td>买墙 $82.93<br><span class="note-inline">$153 万 · 距 -0.55% · 占带内 1.9%</span></td></tr></table></div><div class="table-wrap"><table><tr><th>币种</th><th class="num">24h 主动买占比</th><th class="num">24h 净主动买入</th><th class="num">7 日 CVD</th><th class="num">30 日 CVD</th><th class="num">7 日涨跌</th><th>量价关系</th></tr><tr><td><b>BTC</b></td><td class="num"><span class="down">48.4%</span></td><td class="num down">-$4.0 亿</td><td class="num down">-$4.1 亿</td><td class="num down">-$28.4 亿</td><td class="num">-8.21%</td><td class="">同向</td></tr><tr><td><b>ETH</b></td><td class="num"><span class="down">47.4%</span></td><td class="num down">-$4.8 亿</td><td class="num down">-$11.7 亿</td><td class="num down">-$39.7 亿</td><td class="num">-15.08%</td><td class="">同向</td></tr><tr><td><b>SOL</b></td><td class="num"><span class="down">47.9%</span></td><td class="num down">-$7,013 万</td><td class="num down">-$2.2 亿</td><td class="num down">-$7.3 亿</td><td class="num">-12.73%</td><td class="">同向</td></tr></table></div><p class="note">数据源：Binance Futures 盘口快照 + 逐根 K 线主动成交量 · 盘口为时点快照，只取 1000 档，覆盖宽度按实际档位计算（不足 ±1% 时失衡只代表近端薄层）；挂单可随时撤（spoofing），只用于判断入场时点，<b>不能当作支撑阻力</b>；失衡 =（买 − 卖）/（买 + 卖），正值买盘更厚。CVD = Σ（主动买 − 主动卖），24h 用 1 小时线、7/30 日用日线，只统计已成交，不含挂单。</p></div><div class="card"><h2><span class="badge">B</span>早报结论（基线）<span class="sub">回答：原来的判断是什么、什么情况说明它错了</span></h2><p class="note">以下为 2026-11-11 05:51 生成的早报结论，数字为早报时点，不是实时值；盘中是否仍成立，以本页上方数据为准。</p><p>结论：防守。CPI 高于预期是今天的主线，BTC 跌破 74000、ETH 跌 3.27%，股币同跌叠加机构资金外流，先控仓位、等企稳信号。依据：BTC 现价 73900.21 已低于 sma200 的 73157.37 上方不远处，r7d -4.61%、r30d -11.77%；ETH 2059.26 低于 sma200 2152.73，r30d -18.83%，弱于 BTC。资金面偏空：BTC ETF 5 日 -968.5 百万美元、当日 0；稳定币 1 日 -665436140 美元；CVD 24h/7d/30d 均为负且与价格同向，主动卖压持续。情绪 F&G 32（Fear），BTC 占比 59.8%，资金偏防守。矛盾点：OI 24h +3.88% 而价格下跌，持仓增加伴随下跌，方向未定；BTC 永续资金 0.0073% 仍为正、ETH 为 -0.0027%，多空成本不一致。期权 skew 4.7 显示看跌保护更贵，put/call OI 0.73，max pain 74500 高于现价。计划层面：BTC 向下失守 72545.62 的 2.29R 方案可执行，向上突破 0.94R 不参与；ETH 向上 2.09R 可执行、向下 1.30R 不参与。周五期权到期前波动或放大，等确认再动。</p><p class="note"><b>需要盯住</b></p><ul><li>BTC 能否守住 72545.62 失守位</li><li>ETH 1999.56 与 2584.13 两端触发</li><li>CPI 后资金流与稳定币是否转正</li></ul><p class="note"><b>判断失效条件</b>：若 BTC 重新站上 sma20 78166.23 且 ETF 与稳定币资金流转正、CVD 转正，则防守判断失效。</p></div><div class="card"><h2><span class="badge">Q</span>数据时点与质量<span class="sub">回答：哪些数字是实时的、哪些已经旧了</span></h2><div class="table-wrap"><table><tr><th>模块</th><th>状态</th><th>说明</th></tr><tr><td>行情快照</td><td class="">正常</td><td>币种 6 个</td></tr><tr><td>衍生品仓位</td><td class="">正常</td><td>币种 3 个</td></tr><tr><td>盘口/CVD</td><td class="">正常</td><td>币种 3 个</td></tr></table></div><p class="note">本页不做 AI 解读：评论每天只在早报生成一次。这里的每小时快照会写入 reports/history，供次日早报汇总"隔夜路径"。未刷新（沿用早报）：价格结构与关键位、期权、ETF、宏观、稳定币、情绪、新闻、事件日历、AI 结论。</p><p class="note"><b>早报基线信号</b>：生成于 2026-11-11 05:51，本页未刷新，需按早报正文复核。</p><div class="alerts"><div class="alerts-title">早报基线信号（未刷新）</div><ul><li>美债10年期收益率单日变动 +10.0 bp（4.98%），宏观流动性异动</li><li>BTC 25Δ 偏斜 +4.7 vol：看跌期权明显更贵，机构在买保护</li><li>ETH 25Δ 偏斜 +4.8 vol：看跌期权明显更贵，机构在买保护</li><li>BTC 与纳指 30 日相关性 0.70：加密与科技股敞口高度重叠，同时持有需按合并风险计算</li></ul></div></div><footer>免费数据源：ccxt/交易所公开接口 · Binance Futures（行情/费率/持仓/盘口/CVD） · 早报基线（CoinGecko、DefiLlama、US Treasury、EIA、Deribit、Farside、东方财富）</footer></div></body></html>
